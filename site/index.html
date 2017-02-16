@@ -32,7 +32,18 @@
 <body>
 
 <!-- Build your app here-->
-<h2>Hello <span id="my-name">World</span>!</h2>
+<h2>Hello <span id="my-name">World rhaerh</span>!</h2>
+<button id="change-name" onclick="myFunction()">Try it</button>
+<script>
+
+    function myFunction() {
+        var person = prompt("Please enter your name", "Batman");
+        if (person != null) {
+            document.getElementById("my-name").innerHTML = person;
+        }
+    }
+
+</script>
 
 </body>
 </html>

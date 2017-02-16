@@ -16,6 +16,7 @@
 
 html, body {
   font-family: 'Roboto', 'Helvetica', sans-serif;
+  background: url("http://i2.kym-cdn.com/entries/icons/original/000/018/011/1412982120402.png");
 }
 main, #messages-card {
   height: 100%;

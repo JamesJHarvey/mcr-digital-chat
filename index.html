@@ -29,52 +29,90 @@
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-
-<!-- Build your app here-->
-<h2>Hello <span id="my-name">World Oscar and @jamezharvey on insta (follow)</span>!</h2>
-<button id="change-name" onclick="myFunction()">Try it</button>
-<script>
+<body style="background-color: #FCF281">
 
 
-
-    function myFunction() {
-        var colour = prompt("Please enter your favourite colour", "Pink");
-        if (colour != null) {
-            document.getElementById("my-name").style.color = colour;
-        }
-    }
-
-
-
-</script>
-
-<button id="learn-more" class="btn btn-success btn-lg" type="button">Learn More</button>
-
-
-<script>
-
-    $('#learn-more').click( function() {
-        alert( 'Learn more about what?');
-    });
-
-</script>
 <div>
-    <input type="textfield" id="simple-comment"></input>
-    <button id="simple-send">Post comment</button>
-</div>
-<div class="col-md-8 col-md-offset-2">
-    <h2>Simple Comments</h2>
-    <div id="simple-comments">
-        <ul>
-        </ul>
+    <div>HEADER NAV</div>
+
+    <div>
+        <div>
+            <div></div>
+            <div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div>
+
+        </div>
     </div>
 </div>
+
+
+<!-- Build your app here-->
+<h2>Hello <span id="my-name">Thee Anthony Fantano</span>!</h2>
+
+
+<div style="width: 640px; margin: 0 auto;">
+    <iframe src="https://embed.spotify.com/?uri=spotify:album:2utMSPHiSIHEg2vb9awgDi" width="300" height="380"
+            frameborder="0" allowtransparency="true"></iframe>
+    <div style="margin-top: 30px;">
+        <div class="messaging">
+            <div class="form-group">
+                <label for="name">Display Name:</label>
+                <input type="text" class="form-control" id="name" placeholder="Jane Doe">
+            </div>
+            <div class="form-group">
+                <label for="message">Comment:</label>
+                <input type="text" id="message" class="form-control" placeholder="comment goes here" >
+            </div>
+            <button id="send" class="btn btn-default">Post comment</button>
+            <div class="signinout" style="float: right;">
+                <button id="signin" class="btn btn-default">Sign in</button>
+                <button id="signout" class="btn btn-default">Sign out</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<div id="messages" style="overflow-y: 200px; height: 250px; width: 640px; margin: 0 auto;">
+
+</div>
+
 <script>
-    $("#simple-send").on("click", function(e) {
+    $("#simple-send").on("click", function (e) {
         $("#simple-comments ul").append("<li>" + $("#simple-comment").val() + "</li>");
         $("#simple-comment").val("");
     });
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.5/firebase.js"></script>
+<script src="scripts/main.js"></script>
+<script src="scripts/simplechat.js"></script>
+<script>
+    var chat = new Chat();
+
+    chat.setMessageInput($("#message"));
+    chat.setDisplayNameInput($("#name"));
+    chat.setSubmitButton($("#send"));
+    chat.setSignInButton($("#signin"));
+    chat.setSignOutButton($("#signout"));
+    chat.setMessageList($("#messages"));
+</script>
+
+<script>
+    $("#send").on("click", function(){chat.sendMessage()});
+    $("#signin").on("click", function(){chat.signIn()});
+    $("#signout").on("click", function(){chat.signOut()});
+</script>
+
+<script>
+    chat.listenForMessages();
 </script>
 </body>
 </html>
